@@ -42,7 +42,6 @@ public class Genome {
             sb.append(dnalist[i]);
         }
         dna = sb.toString();
-        return sb.toString();
     }
     public static Genome combine(Genome mother, Genome father){
         StringBuilder sb = new StringBuilder();
@@ -54,6 +53,6 @@ public class Genome {
             }else{
                 sb.append(father.dna.charAt(i));
             }
-        }Genome ji = 's';
-    return this.dna.(sb.toString());}
+        }
+    return null;}
 }
