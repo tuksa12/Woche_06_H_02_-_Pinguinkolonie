@@ -67,7 +67,7 @@ public class Genome {
     public String getGene(int genePos, int geneLength){
         StringBuilder sb = new StringBuilder();
         for (int i = genePos; i < geneLength; i++) {
-            sb.append(dna.charAt(genePos));
+            sb.append(dna.charAt(i));
         }
         return sb.toString();
     }
@@ -94,20 +94,21 @@ public class Genome {
     public int lifespan(){
         int sum = 0;
         int result;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < LENGTH; i++) {
+        int []list = new int[LENGTH];
+        for (int i = 0; i < 2; i++) {
             if (dna.charAt(i) == 'A'){
-                sb.append(0);
+                list[i] = 0;
             }else if (dna.charAt(i) == 'C'){
-                sb.append(1);
+                list[i] = 1;
             }else if (dna.charAt(i) == 'G'){
-                sb.append(2);
+                list[i] = 2;
             }else if (dna.charAt(i) == 'T'){
-                sb.append(3);
+                list[i] = 3;
             }
         }
         for (int i = 0; i < 2; i++) {
-            sum = sum + (sb.codePointAt(LENGTH -1 -i) * ((int) Math.pow(4,i)));
+            sum = sum + ((list[i]) * ((int) Math.pow(4,i)));
+
         }
         result = 8 + sum;
         return result;
@@ -116,20 +117,21 @@ public class Genome {
     public int maxSize(){
         int sum = 0;
         int result;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < LENGTH; i++) {
+        int []list = new int[LENGTH];
+        for (int i = 0; i < 4; i++) {
             if (dna.charAt(i) == 'A'){
-                sb.append(0);
+                list[i] = 0;
             }else if (dna.charAt(i) == 'C'){
-                sb.append(1);
+                list[i] = 1;
             }else if (dna.charAt(i) == 'G'){
-                sb.append(2);
+                list[i] = 2;
             }else if (dna.charAt(i) == 'T'){
-                sb.append(3);
+                list[i] = 3;
             }
         }
         for (int i = 2; i < 4; i++) {
-            sum = sum + (sb.codePointAt(LENGTH -1 -i) * ((int) Math.pow(4,i)));
+            sum = sum + ((list[i]) * ((int) Math.pow(4,i)));
+
         }
         result = 16 + sum;
         return result;
@@ -138,20 +140,21 @@ public class Genome {
     public int skill(){
         int sum = 0;
         int result;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < LENGTH; i++) {
+        int []list = new int[LENGTH];
+        for (int i = 0; i < 9; i++) {
             if (dna.charAt(i) == 'A'){
-                sb.append(0);
+                list[i] = 0;
             }else if (dna.charAt(i) == 'C'){
-                sb.append(1);
+                list[i] = 1;
             }else if (dna.charAt(i) == 'G'){
-                sb.append(2);
+                list[i] = 2;
             }else if (dna.charAt(i) == 'T'){
-                sb.append(3);
+                list[i] = 3;
             }
         }
         for (int i = 4; i < 9; i++) {
-            sum = sum + (sb.codePointAt(LENGTH-1-i) * ((int) Math.pow(4,i)));
+            sum = sum + ((list[i]) * ((int) Math.pow(4,i)));
+
         }
         result = sum;
         return result;
@@ -160,20 +163,21 @@ public class Genome {
     public byte color(){
         int sum = 0;
         byte result;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < LENGTH; i++) {
+        int []list = new int[LENGTH];
+        for (int i = 0; i < 12; i++) {
             if (dna.charAt(i) == 'A'){
-                sb.append(0);
+                list[i] = 0;
             }else if (dna.charAt(i) == 'C'){
-                sb.append(1);
+                list[i] = 1;
             }else if (dna.charAt(i) == 'G'){
-                sb.append(2);
+                list[i] = 2;
             }else if (dna.charAt(i) == 'T'){
-                sb.append(3);
+                list[i] = 3;
             }
         }
         for (int i = 9; i < 12; i++) {
-            sum = sum + (sb.codePointAt(LENGTH-1-i) * ((int) Math.pow(4,i)));
+            sum = sum + ((list[i]) * ((int) Math.pow(4,i)));
+
         }
         result = (byte)sum;
         return result;
@@ -181,19 +185,19 @@ public class Genome {
 
     public boolean isMale(){
         boolean result;
-        StringBuilder sb = new StringBuilder();
+        int []list = new int[LENGTH];
         for (int i = 0; i < LENGTH; i++) {
             if (dna.charAt(i) == 'A'){
-                sb.append(0);
+                list[i] = 0;
             }else if (dna.charAt(i) == 'C'){
-                sb.append(1);
+                list[i] = 1;
             }else if (dna.charAt(i) == 'G'){
-                sb.append(2);
+                list[i] = 2;
             }else if (dna.charAt(i) == 'T'){
-                sb.append(3);
+                list[i] = 3;
             }
         }
-        if (sb.codePointAt(12)==0 || sb.codePointAt(12)==2){
+        if (list[12]==0 || list[12]==2){
             result = true;
         }else{
             result = false;}
