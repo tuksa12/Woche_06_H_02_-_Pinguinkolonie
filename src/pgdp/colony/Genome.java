@@ -26,20 +26,18 @@ public class Genome {
 
     //Teilaufgabe 1.2: Gene
     public Genome(){
-        char []dnalist = new char[LENGTH];
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < LENGTH; i++) {
             int letterNumber = randomInt(0,3);
             if (letterNumber == 0){
-                dnalist[i] = 'A';
+                sb.append('A');
             }else if (letterNumber == 1){
-                dnalist[i] = 'C';
+                sb.append('C');
             }else if (letterNumber == 2){
-                dnalist[i] = 'G';
+                sb.append('G');
             }else if (letterNumber == 3){
-                dnalist[i] = 'T';
+                sb.append('T');
             }
-            sb.append(dnalist[i]);
         }
         dna = sb.toString();
     }
@@ -97,7 +95,7 @@ public class Genome {
         int sum = 0;
         int result;
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < LENGTH; i++) {
             if (dna.charAt(i) == 'A'){
                 sb.append(0);
             }else if (dna.charAt(i) == 'C'){
@@ -119,7 +117,7 @@ public class Genome {
         int sum = 0;
         int result;
         StringBuilder sb = new StringBuilder();
-        for (int i = 2; i < 4; i++) {
+        for (int i = 0; i < LENGTH; i++) {
             if (dna.charAt(i) == 'A'){
                 sb.append(0);
             }else if (dna.charAt(i) == 'C'){
@@ -141,7 +139,7 @@ public class Genome {
         int sum = 0;
         int result;
         StringBuilder sb = new StringBuilder();
-        for (int i = 4; i < 9; i++) {
+        for (int i = 0; i < LENGTH; i++) {
             if (dna.charAt(i) == 'A'){
                 sb.append(0);
             }else if (dna.charAt(i) == 'C'){
@@ -163,7 +161,7 @@ public class Genome {
         int sum = 0;
         byte result;
         StringBuilder sb = new StringBuilder();
-        for (int i = 9; i < 12; i++) {
+        for (int i = 0; i < LENGTH; i++) {
             if (dna.charAt(i) == 'A'){
                 sb.append(0);
             }else if (dna.charAt(i) == 'C'){
@@ -184,7 +182,7 @@ public class Genome {
     public boolean isMale(){
         boolean result;
         StringBuilder sb = new StringBuilder();
-        for (int i = 12; i < 13; i++) {
+        for (int i = 0; i < LENGTH; i++) {
             if (dna.charAt(i) == 'A'){
                 sb.append(0);
             }else if (dna.charAt(i) == 'C'){
@@ -195,7 +193,7 @@ public class Genome {
                 sb.append(3);
             }
         }
-        if (sb.codePointAt(0)==0 || sb.codePointAt(0)==2){
+        if (sb.codePointAt(12)==0 || sb.codePointAt(12)==2){
             result = true;
         }else{
             result = false;}
