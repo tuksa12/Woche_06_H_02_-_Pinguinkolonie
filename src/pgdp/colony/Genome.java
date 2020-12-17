@@ -48,7 +48,16 @@ public class Genome {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < LENGTH; i++) {
             if (randomBoolean(1000)){
-                sb.append(randomInt(0,3));
+                int random = randomInt(0,3);
+                if (random == 0){
+                    sb.append('A');
+                }else if (random == 1){
+                    sb.append('C');
+                }else if (random == 2){
+                    sb.append('G');
+                }else if (random == 3){
+                    sb.append('T');
+                }
             }else if (randomBoolean()){
                 sb.append(mother.dna.charAt(i));
             }else{
@@ -100,7 +109,7 @@ public class Genome {
             }
         }
         for (int i = 0; i < 2; i++) {
-            sum = sum + (sb.codePointAt(i) * ((int) Math.pow(4,LENGTH-1-i)));
+            sum = sum + (sb.codePointAt(LENGTH -1 -i) * ((int) Math.pow(4,i)));
         }
         result = 8 + sum;
         return result;
@@ -122,7 +131,7 @@ public class Genome {
             }
         }
         for (int i = 2; i < 4; i++) {
-            sum = sum + (sb.codePointAt(i) * ((int) Math.pow(4,LENGTH-1-i)));
+            sum = sum + (sb.codePointAt(LENGTH -1 -i) * ((int) Math.pow(4,i)));
         }
         result = 16 + sum;
         return result;
@@ -144,7 +153,7 @@ public class Genome {
             }
         }
         for (int i = 4; i < 9; i++) {
-            sum = sum + (sb.codePointAt(i) * ((int) Math.pow(4,LENGTH-1-i)));
+            sum = sum + (sb.codePointAt(LENGTH-1-i) * ((int) Math.pow(4,i)));
         }
         result = sum;
         return result;
@@ -166,7 +175,7 @@ public class Genome {
             }
         }
         for (int i = 9; i < 12; i++) {
-            sum = sum + (sb.codePointAt(i) * ((int) Math.pow(4,LENGTH-1-i)));
+            sum = sum + (sb.codePointAt(LENGTH-1-i) * ((int) Math.pow(4,i)));
         }
         result = (byte)sum;
         return result;
