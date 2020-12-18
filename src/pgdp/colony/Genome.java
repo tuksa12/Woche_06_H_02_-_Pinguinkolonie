@@ -39,7 +39,7 @@ public class Genome {
                 sb.append('T');
             }
         }
-        dna = sb.toString();
+        this.dna = sb.toString();
     }
     public static Genome combine(Genome mother, Genome father){
         String result;
@@ -66,8 +66,11 @@ public class Genome {
     }
     public String getGene(int genePos, int geneLength){
         StringBuilder sb = new StringBuilder();
-        for (int i = genePos; i < geneLength; i++) {
-            sb.append(dna.charAt(i));
+        if (genePos != geneLength){
+            for (int i = genePos; i < geneLength; i++) {
+                sb.append(dna.charAt(i));}
+        }else{
+            sb.append(dna.charAt(genePos));
         }
         return sb.toString();
     }
@@ -129,9 +132,10 @@ public class Genome {
                 list[i] = 3;
             }
         }
+        int j = 0;
         for (int i = 2; i < 4; i++) {
-            sum = sum + ((list[i]) * ((int) Math.pow(4,i)));
-
+            sum = sum + ((list[i]) * ((int) Math.pow(4,j)));
+            j++;
         }
         result = 16 + sum;
         return result;
@@ -152,9 +156,10 @@ public class Genome {
                 list[i] = 3;
             }
         }
+        int j = 0;
         for (int i = 4; i < 9; i++) {
-            sum = sum + ((list[i]) * ((int) Math.pow(4,i)));
-
+            sum = sum + ((list[i]) * ((int) Math.pow(4,j)));
+            j++;
         }
         result = sum;
         return result;
@@ -175,9 +180,10 @@ public class Genome {
                 list[i] = 3;
             }
         }
+        int j = 0;
         for (int i = 9; i < 12; i++) {
-            sum = sum + ((list[i]) * ((int) Math.pow(4,i)));
-
+            sum = sum + ((list[i]) * ((int) Math.pow(4,j)));
+            j++;
         }
         result = (byte)sum;
         return result;
