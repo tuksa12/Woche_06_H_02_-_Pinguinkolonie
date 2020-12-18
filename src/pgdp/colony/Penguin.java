@@ -48,7 +48,7 @@ public class Penguin {
         genome = Genome.combine(mother.genome,father.genome);
         health =50;
         numFish =0;
-        size = size/2;
+        size = genome.maxSize()/2;//size/2
     }
     public Penguin(Genome genome, int ageInDays){
         this.genome = genome;
@@ -72,7 +72,7 @@ public class Penguin {
          return result;
     }
     public Penguin mateWith(Penguin male){
-        if (this.genome.isMale() == false && male.genome.isMale() == true){
+        if (this.genome.isMale() == false || male.genome.isMale() == true){
             return child;
         }
     return null;}

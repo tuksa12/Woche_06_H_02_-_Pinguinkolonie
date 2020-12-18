@@ -66,12 +66,8 @@ public class Genome {
     }
     public String getGene(int genePos, int geneLength){
         StringBuilder sb = new StringBuilder();
-        if (genePos != geneLength){
-            for (int i = genePos; i < geneLength; i++) {
-                sb.append(dna.charAt(i));}
-        }else{
-            sb.append(dna.charAt(genePos));
-        }
+        for (int i = 0; i < geneLength; i++) {//mudei de i = genePos para 0
+            sb.append(dna.charAt(genePos+i));}//mudei de i para genePos+i
         return sb.toString();
     }
     public static int interpretGene(String gene){
@@ -109,9 +105,10 @@ public class Genome {
                 list[i] = 3;
             }
         }
+        int j = 1;
         for (int i = 0; i < 2; i++) {
-            sum = sum + ((list[i]) * ((int) Math.pow(4,i)));
-
+            sum = sum + ((list[i]) * ((int) Math.pow(4,j)));
+            j--;
         }
         result = 8 + sum;
         return result;
@@ -132,10 +129,10 @@ public class Genome {
                 list[i] = 3;
             }
         }
-        int j = 0;
+        int j = 1;
         for (int i = 2; i < 4; i++) {
             sum = sum + ((list[i]) * ((int) Math.pow(4,j)));
-            j++;
+            j--;
         }
         result = 16 + sum;
         return result;
@@ -156,10 +153,10 @@ public class Genome {
                 list[i] = 3;
             }
         }
-        int j = 0;
+        int j = 4;
         for (int i = 4; i < 9; i++) {
             sum = sum + ((list[i]) * ((int) Math.pow(4,j)));
-            j++;
+            j--;
         }
         result = sum;
         return result;
@@ -180,10 +177,10 @@ public class Genome {
                 list[i] = 3;
             }
         }
-        int j = 0;
+        int j = 2;
         for (int i = 9; i < 12; i++) {
             sum = sum + ((list[i]) * ((int) Math.pow(4,j)));
-            j++;
+            j--;
         }
         result = (byte)sum;
         return result;
