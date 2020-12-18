@@ -73,7 +73,7 @@ public class Genome {
     public static int interpretGene(String gene){
         int result = 0;
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < LENGTH; i++) {
+        for (int i = 0; i < gene.length(); i++) {
             if (gene.charAt(i) == 'A'){
                 sb.append(0);
             }else if (gene.charAt(i) == 'C'){
@@ -84,8 +84,10 @@ public class Genome {
                 sb.append(3);
             }
         }
-        for (int i = 0; i < LENGTH; i++) {
-            result = result + (sb.codePointAt(i) * ((int) Math.pow(4,LENGTH-1-i)));
+        int j = gene.length()-1;
+        for (int i = 0; i < gene.length(); i++) {
+            result = result + (sb.codePointAt(i) * ((int) Math.pow(4,j)));
+            j--;
         }
         return result;
     }

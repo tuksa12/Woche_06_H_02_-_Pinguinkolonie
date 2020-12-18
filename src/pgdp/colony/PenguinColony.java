@@ -7,7 +7,7 @@ public class PenguinColony {
 	static final int ADULT_AGE = 1;
 	static final int DAYS_PER_YEAR = 5;
 	private int time = 0;
-	private PenguinList population = null;
+	private PenguinList population = new PenguinList();
 
 	public int getTime(){
 		return time;
@@ -18,7 +18,7 @@ public class PenguinColony {
 	}
 	public Penguin createPenguin(Genome genome){
 		Penguin penguin = new Penguin(genome,DAYS_PER_YEAR);
-		population.list.add(population.list.lastIndexOf(population),penguin);
+		population.list.add(penguin);
 	return penguin;
 	}
 
@@ -58,6 +58,5 @@ public class PenguinColony {
 					}
 			}
 		}
-
 	}
 }

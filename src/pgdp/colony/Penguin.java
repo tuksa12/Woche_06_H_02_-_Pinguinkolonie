@@ -56,7 +56,7 @@ public class Penguin {
         name = generateName();
         health =50;
         numFish =0;
-        size = size/2;
+        size = genome.maxSize()/2;
     }
 
     //Teilaufgabe 2.3: Pinguin-Liebe
@@ -72,7 +72,9 @@ public class Penguin {
          return result;
     }
     public Penguin mateWith(Penguin male){
-        if (this.genome.isMale() == false || male.genome.isMale() == true){
+        if (male.genome.isMale() == true && male.canMate()){
+            this.child = new Penguin(Penguin.this,male);
+            male.child = this.child;
             return child;
         }
     return null;}
@@ -117,8 +119,14 @@ public class Penguin {
     public boolean sleep(){
         boolean alive = true;
         ageInDays ++;
-        if (child.ageInDays > 4){
-            child = null;
+        if (child == null){
+
+        }else{
+            if (child.ageInDays > 4){
+                new Penguin(child.genome,child.ageInDays);
+                child = null;
+
+            }
         }
         if (health <= 0 || ageInDays > genome.lifespan()){
             alive = false;
