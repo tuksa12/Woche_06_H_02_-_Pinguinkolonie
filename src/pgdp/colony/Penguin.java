@@ -129,6 +129,7 @@ public class Penguin {
             }
         }
         if (health <= 0 || ageInDays > genome.lifespan()){
+            health = 0;
             alive = false;
         }
         return alive;
@@ -148,6 +149,7 @@ public class Penguin {
         sb.append("Size="+size+"/"+genome.maxSize()+"; ");
         sb.append("Lifespan="+genome.lifespan()+"; ");
         sb.append("Skill="+genome.skill()+"; ");
+        sb.append("Num Fish="+numFish+"; ");
         sb.append("Color="+genome.color()+"; ");
         if (child == null){
             sb.append("Child=none;");

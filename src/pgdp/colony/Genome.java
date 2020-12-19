@@ -73,20 +73,22 @@ public class Genome {
     public static int interpretGene(String gene){
         int result = 0;
         StringBuilder sb = new StringBuilder();
+        sb.append(gene);
+        int []letter = new int[gene.length()];
         for (int i = 0; i < gene.length(); i++) {
-            if (gene.charAt(i) == 'A'){
-                sb.append(0);
-            }else if (gene.charAt(i) == 'C'){
-                sb.append(1);
-            }else if (gene.charAt(i) == 'G'){
-                sb.append(2);
-            }else if (gene.charAt(i) == 'T'){
-                sb.append(3);
+            if (sb.charAt(i) == 'A'){
+                letter[i] = 0;
+            }else if (sb.charAt(i) == 'C'){
+                letter[i] = 1;
+            }else if (sb.charAt(i) == 'G'){
+                letter[i] = 2;
+            }else if (sb.charAt(i) == 'T'){
+                letter[i] = 3;
             }
         }
         int j = gene.length()-1;
         for (int i = 0; i < gene.length(); i++) {
-            result = result + (sb.codePointAt(i) * ((int) Math.pow(4,j)));
+            result = result + (letter[i] * ((int) Math.pow(4,j)));
             j--;
         }
         return result;

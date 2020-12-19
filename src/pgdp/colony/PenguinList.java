@@ -1,8 +1,6 @@
 package pgdp.colony;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class PenguinList implements Iterable<Penguin> {
     protected List<Penguin> list = new ArrayList<>();
