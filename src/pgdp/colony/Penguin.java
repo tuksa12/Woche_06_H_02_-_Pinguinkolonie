@@ -5,13 +5,13 @@ import static pgdp.MiniJava.*;
 public class Penguin {
     //Constants
     static final int MAX_HEALTH = 50;
-    final String name;
-    final Genome genome;
-    int ageInDays;
-    int size;
-    int health;
-    int numFish;
-    Penguin child;
+    private final String name;
+    private final Genome genome;
+    private int ageInDays;
+    private int size;
+    private int health;
+    private int numFish;
+    private Penguin child;
 
     //Teilaufgabe 2.1: Pinguin-Attribute
     String getName(){
@@ -48,7 +48,7 @@ public class Penguin {
         genome = Genome.combine(mother.genome,father.genome);
         health =50;
         numFish =0;
-        size = genome.maxSize()/2;//size/2
+        size = genome.maxSize()/2;
     }
     public Penguin(Genome genome, int ageInDays){
         this.genome = genome;
@@ -83,7 +83,7 @@ public class Penguin {
     public int hunt(int competition){
         int x = randomInt(genome.skill()/2, genome.skill());
         int catchFish = (size/2) +(x/competition);
-        numFish =numFish + catchFish;
+        numFish = numFish + catchFish;
         return numFish;
     }
 

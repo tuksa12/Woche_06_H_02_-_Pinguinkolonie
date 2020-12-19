@@ -47,9 +47,9 @@ public class PenguinColony {
 		int size = population.list.size();
 		if (time % 5 == 0) {
 			for (int i = 1; i <= population.list.size(); i++) {
-				if (population.list.get(population.list.size() - i).genome.isMale() == false && population.list.get(population.list.size() - i).canMate())
+				if (population.list.get(population.list.size() - i).getGenome().isMale() == false && population.list.get(population.list.size() - i).canMate())
 					for (int j = 1; j <= population.list.size(); j++) {
-						if (population.list.get(population.list.size() - j).genome.isMale() && population.list.get(population.list.size() - j).canMate()) {
+						if (population.list.get(population.list.size() - j).getGenome().isMale() && population.list.get(population.list.size() - j).canMate()) {
 							similarity = population.list.get(population.list.size() - i).checkSimilarity(population.list.get(population.list.size() - j));
 							if (similarity < biggestSimilarity) {
 								biggestSimilarity = similarity;
