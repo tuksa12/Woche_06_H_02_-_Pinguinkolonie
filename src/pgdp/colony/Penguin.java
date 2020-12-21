@@ -22,7 +22,7 @@ public class Penguin {
     }
 
     int getAge(){
-        int ageInYears = ageInDays/5;
+        int ageInYears = ageInDays /5;
         return ageInYears;
     }
 
@@ -88,22 +88,22 @@ public class Penguin {
     }
 
     public void eat(){
-         if (child != null){
+         if (child != null){//Distribution of fish to the children
              child.numFish = (numFish/4);
              numFish = ((3*numFish)/4);
          }
-         if (numFish<size){
+         if (numFish<size){//Lose health situation
              int loseHealth = size-numFish;
              health = health-loseHealth;
              numFish = 0;
-         }else{
+         }else{//Gain health situation
              if (health < MAX_HEALTH){
                  health = health + numFish-size;
                  if (health > MAX_HEALTH){
                      numFish = health-MAX_HEALTH;
                      health = MAX_HEALTH;
                  }
-             }
+             }//Gain size situation
              if (size < getGenome().maxSize()){
                  size = size + numFish;
                  if (size > genome.maxSize()){
@@ -122,13 +122,12 @@ public class Penguin {
         if (child == null){
 
         }else{
-            if (child.ageInDays > 4){
-                new Penguin(child.genome,child.ageInDays);
+            if (child.ageInDays > 4){//Child is no longer a child
                 child = null;
 
             }
         }
-        if (health <= 0 || ageInDays > genome.lifespan()){
+        if (health <= 0 || ageInDays > genome.lifespan()){//Death
             health = 0;
             alive = false;
         }

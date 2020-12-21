@@ -9,6 +9,7 @@ public class PenguinColony {
 	private int time = 0;
 	private PenguinList population = new PenguinList();
 
+	//Teilaufgabe 3.1: Kolonie-Attribute
 	public int getTime() {
 		return time;
 	}
@@ -26,45 +27,41 @@ public class PenguinColony {
 	//Teilaufgabe 3.2: Kolonie-Simulation
 	public void simulateDay() {
 		time++;
-		for (int i = 0; i < population.list.size(); i++) {
+		for (int i = 0; i < population.list.size(); i++) {//For loop so that every penguin hunt
 			Penguin penguin = population.list.get(i);
 			penguin.hunt(population.list.size());
 		}
-		for (int i = 0; i < population.list.size(); i++) {
+		for (int i = 0; i < population.list.size(); i++) {//For loop so that every penguin eat
 			Penguin penguin = population.list.get(i);
 			penguin.eat();
 		}
-		for (int i = 1; i <= population.list.size(); i++) {
+		for (int i = 1; i <= population.list.size(); i++) {//For loop so that every penguin sleep
 			Penguin penguin = population.list.get(population.list.size() - i);
-			penguin.sleep();
-			if (penguin.sleep() == false) {
+			boolean alive = penguin.sleep();
+			if (alive == false) {//Death scenario
 				population.list.remove(penguin);
 			}
 		}
+		//A few variables to help
 		int similarity = 100;
-		int biggestSimilarity = 100;
+		int smallestSimilarity = 100;
 		int index = 0;
 		int size = population.list.size();
-		if (time % 5 == 0) {
-			for (int i = 1; i <= population.list.size(); i++) {
-				if (population.list.get(population.list.size() - i).getGenome().isMale() == false && population.list.get(population.list.size() - i).canMate())
-					for (int j = 1; j <= population.list.size(); j++) {
-						if (population.list.get(population.list.size() - j).getGenome().isMale() && population.list.get(population.list.size() - j).canMate()) {
-							similarity = population.list.get(population.list.size() - i).checkSimilarity(population.list.get(population.list.size() - j));
-							if (similarity < biggestSimilarity) {
-								biggestSimilarity = similarity;
-								index = population.list.size() - j;
-
+		if (time % 5 == 0) {//Time for reproduce
+			for (int i = 1; i <= size; i++) {
+				if (population.list.get(size - i).getGenome().isMale() == false && population.list.get(size - i).canMate())//Female pick the male
+					for (int j = 1; j <= size; j++) {
+						if (population.list.get(size - j).getGenome().isMale() && population.list.get(size - j).canMate()) {
+							similarity = population.list.get(size - i).checkSimilarity(population.list.get(size - j));
+							if (similarity <= smallestSimilarity) {//Smallest similarity -> suitable mate
+								smallestSimilarity = similarity;
+								index = size - j;
 							}
-						}if (j == size){
-							population.list.add(population.list.get(population.list.size() - i).mateWith(population.get(index)));
+						}if (j == size && population.list.get(size - j).getChild() == null && population.list.get(index).getGenome().isMale()){
+							population.list.add(population.list.get(size - i).mateWith(population.get(index)));//Creation of children
 						}
-						}
-
+					}
 			}
-
 		}
-
-
 	}
 }
